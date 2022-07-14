@@ -1,4 +1,4 @@
-
+###############第一种，原有格式中包含经纬度等信息##################
 dataset=xr.Dataset({'d':climate_t_08,            #要保证这些变量都还是dataarray格式，且大小相同
                   'z':climate_z_08,
                   'q':climate_q_08,
@@ -26,3 +26,23 @@ dataset_08.to_netcdf('climate_08.nc')
    #    v          (level, latitude, longitude) float32 1.805 1.794 ... 0.9429
    #    w          (level, latitude, longitude) float32 0.0008659 ... -0.009231
    #    vo         (level, latitude, longitude) float32 -2.598e-07 ... 4.198e-06
+
+###############第二种，原有格式为列表##################
+ds = xr.Dataset({
+    't_dpt':(['time','level','lat','lon'],dpt)},
+    coords={'time':['05','06','07','08','09','10','11'],
+            'level':[300,850],
+            'lat':(['lat'],lat),
+            'lon':(['lon'],lon)
+        })
+ds.to_netcdf('ncepyb11t_dpt.nc')
+#长这样
+  #<xarray.Dataset>
+  #Dimensions:  (time: 7, level: 2, lat: 25, lon: 38)
+  #Coordinates:
+  #  * time     (time) <U2 '05' '06' '07' '08' '09' '10' '11'
+  #  * level    (level) int64 300 850
+  #  * lat      (lat) float64 55.5 54.0 52.5 51.0 49.5 ... 25.5 24.0 22.5 21.0 19.5
+  #  * lon      (lon) float64 90.0 91.5 93.0 94.5 96.0 ... 141.0 142.5 144.0 145.5
+  #Data variables:
+  #    t_dpt    (time, level, lat, lon) float64 -0.322 -0.03984 ... -0.185 -0.4096
