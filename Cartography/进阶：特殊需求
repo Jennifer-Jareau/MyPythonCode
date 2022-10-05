@@ -1,0 +1,19 @@
+#1 双向都是三角的色标
+
+cmap = mpl.colors.ListedColormap(['                     '])     #中间的颜色，从小到大排列
+cmap.set_over(         ')                                       #大于某值的颜色
+cmap.set_under('       ')                                       #小于某值的颜色
+bounds =[             ]                                         #中间的level，n个颜色n+1个level
+norm = mpl.colors.BoundaryNorm(bounds, cmap.N)
+cb=fig.colorbar(
+mpl.cm.ScalarMappable(cmap=cmap, norm=norm),
+boundaries=[-100]+ bounds+[100],                                #范围尽量大一点
+extend='both',
+extendfrac=0.5,
+ticks=bounds,                                                   #色标上的标签，一般和bounds一样
+fraction=0.03,                                                  #粗细
+aspect=4,                                                       #长短
+spacing='uniform',
+orientation='vertical',
+)
+cb.ax.tick_params(labelsize=10)
