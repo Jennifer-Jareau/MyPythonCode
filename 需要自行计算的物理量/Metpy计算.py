@@ -9,7 +9,7 @@ q=data['q']
 u=data['u']
 v=data['v']
 V=(u**2+v**2)**0.5
-Q=q*V/(constants.g*units.second**2/units.meter)   #去单位，单位自己知道就好不知怎么保存，气死
+Q=q*V/(constants.g.magnitude)   #去单位
 qu=q*u
 qv=q*v
 
