@@ -61,3 +61,21 @@ def drawlandcross(f,start,end):
     c=f.fill_between(lon_z,1010,z_cross,facecolor='#D3D3D3',zorder=10)
 
 
+##垂直剖面地形，flag=1沿某一经线剖，flag=0沿某一纬线剖
+def drawlandform_grey_vertical(f,extent,flag):
+    top=xr.open_dataset("/*********/china_near.nc")
+    lon_l=int((extent[0]-90.0)*60)
+    lon_r=int((extent[1]-90.0)*60)
+    lat_l=int((extent[2]-15.0)*60)
+    lat_u=int((extent[3]-15.0)*60)
+    if flag:
+        z=np.mean(top['z'][lat_l:lat_u+1,lon_l:lon_r+1],flag)
+        y=top['y'][lat_l:lat_u+1]
+        pz=(1-z/44331.0)**(1.0/0.1903)*1013.255
+        c=f.fill_between(y,1010,pz,facecolor='#D3D3D3',zorder=20)
+
+    else:        
+        z=np.mean(top['z'][lat_l:lat_u+1,lon_l:lon_r+1],flag)
+        x=top['x'][lon_l:lon_r+1]
+        pz=(1-z/44331.0)**(1.0/0.1903)*1013.255
+        c=f.fill_between(x,1010,pz,facecolor='#D3D3D3',zorder=20)
