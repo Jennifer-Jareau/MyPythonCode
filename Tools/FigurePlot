@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Sample levels
-levels = np.linspace(0, 1, 6)
+levels =np.arange(-6,6.5,0.5)
 
 # Colormap
 cmap = plt.cm.RdYlBu_r
@@ -17,4 +17,4 @@ colors_hex = [plt.cm.colors.to_hex(cmap(norm(level))) for level in levels]
 # Print out the levels along with their corresponding HEX colors
 for i, level_color in enumerate(zip(levels, colors_hex)):
     level, color_hex = level_color
-    print(f"Level {i + 1} - Value: {level}, Color: {color_hex}")
+    print(f'\'{color_hex}\'',end=',')
