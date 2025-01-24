@@ -5,7 +5,7 @@ Diagnosing the ageostrophic component is, therefore, essential for understanding
 The diagnostic euqation of ageostropic wind is as follows:
 $$
 \vec{V_a} = \frac{1}{f} \vec{k} \times \frac{\partial \vec{V}}{\partial t} 
-           + \frac{1}{f} \vec{k} \times \left[ (\vec{V} \cdot \nabla) \vec{V} \right] 
+           + \frac{1}{f} \vec{k} \times
            + \frac{R \omega}{p f^2} \nabla_p T 
            - \frac{1}{f} \vec{k} \times \vec{F_h} 
            + \frac{1}{f} \vec{k} \times \left( \omega \frac{\partial \vec{V_a}}{\partial p} \right)
