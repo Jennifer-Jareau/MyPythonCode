@@ -1,6 +1,7 @@
 # Introduction
 The total wind can be decomposed into geostrophic and ageostrophic components, with the latter responsible for the entire divergence of the total wind. 
 Diagnosing the ageostrophic component is, therefore, essential for understanding atmospheric dynamics and weather evolution.
+
 The diagnostic euqation of ageostropic wind is as follows:
 $$
 \vec{V_a} = \frac{1}{f} \vec{k} \times \frac{\partial \vec{V}}{\partial t} 
