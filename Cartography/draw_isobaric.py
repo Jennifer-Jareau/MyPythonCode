@@ -77,3 +77,19 @@ def draw_rectangle(f, extent, color, lw, ls):
     rec = plt.Rectangle(  (extent[0], extent[2]), extent[1] - extent[0],  extent[3] - extent[2],
         edgecolor=color, linestyle=ls, fill=False,  linewidth=lw, zorder=30, transform=ccrs.PlateCarree()    )
     f.add_patch(rec)
+
+if __name__ == "__main__":
+    proj = ccrs.PlateCarree(central_longitude=0)
+    fig=plt.figure(figsize=(7,8.5))   
+    gs=fig.add_gridspec(6,1,width_ratios=[1,1,1],height_ratios=[40,1,40,1,40,1])
+    f1=fig.add_subplot(gs[0,0],projection = proj)
+    plt.title('(a) Land-Only',loc='left')
+    f2=fig.add_subplot(gs[2,0],projection = proj)
+    plt.title('(d) Land-Only',loc='left')
+    f3=fig.add_subplot(gs[4,0],projection = proj)
+    plt.title('(g) Land-Only',loc='left')
+    fcb1=fig.add_subplot(gs[1,0])
+    fcb2=fig.add_subplot(gs[3,0])
+    fcb3=fig.add_subplot(gs[5,0])
+
+
